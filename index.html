@@ -17,7 +17,7 @@
   >
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-layout="classic">
   <div class="background-orb orb-one"></div>
   <div class="background-orb orb-two"></div>
 
@@ -38,7 +38,12 @@
         <a href="#contact">Contact</a>
       </nav>
 
-      <a class="button button-secondary header-cta" href="#contact">Book a discovery call</a>
+      <div class="header-actions">
+        <button class="button button-ghost layout-toggle" type="button" aria-pressed="false">
+          Try alternate layout
+        </button>
+        <a class="button button-secondary header-cta" href="#contact">Book a discovery call</a>
+      </div>
     </header>
 
     <main id="top">
@@ -67,17 +72,19 @@
             <div class="hero-card-portrait-wrap" aria-hidden="true">
               <img class="hero-card-portrait" src="assets/cutouts/jessica-linkedin-cutout-3.png" alt="">
             </div>
-            <div class="hero-portrait-badge">
-              <span>People</span>
-              <span>Strategy</span>
-              <span>Action</span>
+            <div class="hero-card-copy">
+              <div class="hero-portrait-badge">
+                <span>People</span>
+                <span>Strategy</span>
+                <span>Action</span>
+              </div>
+              <h2>I love puzzles and people, and puzzles about people.</h2>
+              <ul class="point-list">
+                <li>Scientist, strategist, facilitator, and operator in one room.</li>
+                <li>Strong at turning complex insight into clear direction.</li>
+                <li>Designed for high-stakes growth, portfolio, and change decisions.</li>
+              </ul>
             </div>
-            <h2>I love puzzles and people, and puzzles about people.</h2>
-            <ul class="point-list">
-              <li>Scientist, strategist, facilitator, and operator in one room.</li>
-              <li>Strong at turning complex insight into clear direction.</li>
-              <li>Designed for high-stakes growth, portfolio, and change decisions.</li>
-            </ul>
           </div>
         </aside>
       </section>
@@ -197,5 +204,35 @@
       </section>
     </main>
   </div>
+
+  <script>
+    (function () {
+      var storageKey = "jessica-lea-layout";
+      var body = document.body;
+      var button = document.querySelector(".layout-toggle");
+
+      if (!body || !button) {
+        return;
+      }
+
+      function applyLayout(layout) {
+        var isAlternate = layout === "alternate";
+        body.setAttribute("data-layout", isAlternate ? "alternate" : "classic");
+        button.setAttribute("aria-pressed", String(isAlternate));
+        button.textContent = isAlternate ? "Back to classic layout" : "Try alternate layout";
+      }
+
+      var savedLayout = window.localStorage.getItem(storageKey);
+      applyLayout(savedLayout === "alternate" ? "alternate" : "classic");
+
+      button.addEventListener("click", function () {
+        var nextLayout =
+          body.getAttribute("data-layout") === "alternate" ? "classic" : "alternate";
+
+        applyLayout(nextLayout);
+        window.localStorage.setItem(storageKey, nextLayout);
+      });
+    }());
+  </script>
 </body>
 </html>
