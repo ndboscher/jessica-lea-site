@@ -301,7 +301,8 @@ h3 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 24%;
+  object-position: center 22%;
+  transform: scale(1.12);
 }
 
 .hero-portrait-badge {
@@ -454,7 +455,8 @@ h3 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 24%;
+  object-position: center 22%;
+  transform: scale(1.08);
 }
 
 .contact-section {
@@ -477,7 +479,8 @@ h3 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 24%;
+  object-position: center 22%;
+  transform: scale(1.08);
 }
 
 .contact-line {
